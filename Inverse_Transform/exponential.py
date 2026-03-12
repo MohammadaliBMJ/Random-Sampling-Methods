@@ -28,7 +28,6 @@ def exponential_sampler(lamb, size = 10000, rng = None) -> np.ndarray:
     U = np.clip(U, 1e-12, 1 - 1e-12)
 
     return -np.log(U) / lamb
-    
 
 
 def plot_exp_dist(samples, lamb):
