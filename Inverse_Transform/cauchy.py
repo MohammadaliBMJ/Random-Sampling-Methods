@@ -9,7 +9,7 @@ def cauchy_sampler(x0: float, gamma: float, size: int = 1000, rng = None)\
     parameters
     ----------
     x0 : float
-        the mean and the median of the distribution
+        location parameter. the mean and the median of the distribution
     gamma : float
         the width or spread of the peak
     size : int
@@ -49,7 +49,7 @@ def plot_cauchy_dist(samples):
     plt.title("Cauchy Distribution with Inverse Transform Method")
     plt.show()
 
-samples = cauchy_sampler(x0 = 0.0, gamma = 6.0, rng = np.random.default_rng(10))
+samples = cauchy_sampler(x0 = 0.0, gamma = 1.0, rng = np.random.default_rng(10))
 plot_cauchy_dist(samples)
 
     
