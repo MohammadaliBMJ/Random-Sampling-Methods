@@ -16,7 +16,7 @@ def exponential_sampler(lamb, size = 10000, rng = None) -> np.ndarray:
 
     returns
     -------
-    a numpy array of:
+    a numpy array
         inverse of exponential distribution CDF
     """
     # Create a default rng if nothing is passed to the function
@@ -30,7 +30,7 @@ def exponential_sampler(lamb, size = 10000, rng = None) -> np.ndarray:
     return -np.log(U) / lamb
 
 
-def plot_exp_dist(samples, lamb):
+def plot_exp_dist(samples):
     """
     Plot the samples of the exponential distribution with inverse transform
 
@@ -38,17 +38,17 @@ def plot_exp_dist(samples, lamb):
     ----------
     samples : np.ndarray
         samples of the exponential distribution
-    lamb : int
-        rate parameter in exponential distribution
     """
     x = np.linspace(0, 5, 10000)
     plt.hist(samples, bins = 100, density = True, alpha = 0.5, label = 'exp sampled')
-    plt.plot(x, np.sort(samples)[::-1], "r-", label = "exp sampled")
-    plt.title("exp distribution with Inverse Transform sampling")
+    counts, edges = np.histogram(samples, bins = 100, density = True)
+    centers = (edges[:-1] + edges[1:]) / 2
+    plt.plot(centers, counts, "r-", label = "exp sampled")
+    plt.title("exp Distribution With Inverse Transform Sampling")
     plt.xlim(left = 0)
     plt.legend()
     plt.show()
 
-lamb = 2
-samples = exponential_sampler(lamb, rng = np.random.default_rng(10))
-plot_exp_dist(samples, lamb)
+
+samples = exponential_sampler(lamb = 2, rng = np.random.default_rng(10))
+plot_exp_dist(samples)
