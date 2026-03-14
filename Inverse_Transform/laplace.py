@@ -16,6 +16,11 @@ def laplace_sampler(mu: float, b: float, size: int = 1000, rng = None) -> np.nda
         number of samples
     rng : numpy object
         random number generator
+
+    returns
+    -------
+    np.ndarray
+        inverse of the laplace distribution CDF
     """
     if rng is None:
         rng = np.random.default_rng()
@@ -24,8 +29,20 @@ def laplace_sampler(mu: float, b: float, size: int = 1000, rng = None) -> np.nda
 
 
 def plot_laplace_dist(samples: np.ndarray, mu: float, b: float):
+    """
+    Plot the laplace distribution using samples
+
+    paramters
+    ---------
+    samples : np.ndarray
+        samples from the laplace distribution
+    mu : float
+        mean of the distribution and location parameter
+    b : float
+        scale parameter. controls the spread of the distribution 
+    """
     sorted_samples = np.sort(samples)
-    plt.hist(sorted_samples, bins = 50,color = "blue", alpha = 0.5, label = "histogram")
+    plt.hist(sorted_samples, bins = 500, density = True, color = "blue", alpha = 0.5, label = "histogram")
     # Plot the laplace distribution
     x = np.linspace(-1, 1, 1000)
     laplace = (1 / (2 * b)) * np.exp(-(np.abs(x - mu) / b))
@@ -35,5 +52,5 @@ def plot_laplace_dist(samples: np.ndarray, mu: float, b: float):
 
 mu = 0.0
 b = 0.05
-samples = laplace_sampler(mu, b, size = 500, rng = np.random.default_rng(10))
+samples = laplace_sampler(mu, b, size = 5000, rng = np.random.default_rng(10))
 plot_laplace_dist(samples, mu, b)
