@@ -28,7 +28,7 @@ def cauchy_sampler(x0: float, gamma: float, size: int = 1000, rng = None)\
     return x0 + gamma * (np.tan(np.pi * (U - 0.5)))
 
 
-def plot_cauchy_dist(samples):
+def plot_cauchy_dist(samples: np.ndarray):
     """
     Plot the samples of the cauchy distribution with inverse transform
 
