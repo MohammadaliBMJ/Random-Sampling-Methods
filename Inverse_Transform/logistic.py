@@ -41,6 +41,7 @@ def plot_logistic_dist(samples: np.ndarray, mu: float, s: float):
         scale parameters. determines the spread of the distribution
     """
     plt.hist(samples, bins = 500, density = True, color = "blue", alpha = 0.5, range = (-10, 10))
+    # Theoretical Logistic Distribution PDF
     x = np.linspace(-10, 10, 1000)
     logistic_exp = np.exp(-(x - mu) / s)
     logistic_distribution = logistic_exp / (s * ((1 + logistic_exp) ** 2))

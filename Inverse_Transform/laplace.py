@@ -43,7 +43,7 @@ def plot_laplace_dist(samples: np.ndarray, mu: float, b: float):
     """
     sorted_samples = np.sort(samples)
     plt.hist(sorted_samples, bins = 500, density = True, color = "blue", alpha = 0.5, label = "histogram")
-    # Plot the laplace distribution
+    # Plot the Theoretical laplace distribution PDF
     x = np.linspace(-1, 1, 1000)
     laplace = (1 / (2 * b)) * np.exp(-(np.abs(x - mu) / b))
     plt.plot(x, laplace, label = "laplace", color = "darkred", lw = 2)
